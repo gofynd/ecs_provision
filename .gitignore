@@ -1,0 +1,5 @@
+*.pyc
+*.idea
+build
+dist
+ecs_provision.egg-info

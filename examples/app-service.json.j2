@@ -1,0 +1,28 @@
+{
+  "cluster": "{{cluster_name}}",
+  "serviceName": "flask-full-app-service",
+  "taskDefinition": "flask-full-app-task",
+  "loadBalancers": [
+    {
+      "targetGroupArn": "{{target_group_arn}}",
+      "containerName": "{{app_container}}",
+      "containerPort": 80
+    }
+  ],
+  "desiredCount": 2,
+  "launchType": "EC2",
+  "deploymentConfiguration": {
+    "maximumPercent": 100,
+    "minimumHealthyPercent": 50
+  },
+  "placementStrategy": [
+  {
+    "field": "attribute:ecs.availability-zone",
+    "type": "spread"
+  },
+  {
+    "field": "instanceId",
+    "type": "spread"
+  }
+  ]
+}

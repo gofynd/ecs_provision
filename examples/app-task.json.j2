@@ -1,0 +1,42 @@
+{
+  "containerDefinitions": [
+    {
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/{{cluster_name}}/{{project_name}}",
+          "awslogs-region": "{{region}}",
+          "awslogs-stream-prefix": "app"
+        }
+      },
+      "portMappings": [
+        {
+          "hostPort": 0,
+          "protocol": "tcp",
+          "containerPort": 80
+        }
+      ],
+      "command": [
+        "./docker/app/run_app.sh"
+      ],
+      "cpu": 0,
+      "environment": [
+        {
+          "name": "APP_CONFIG",
+          "value": "{{app_config}}"
+        },
+      ],
+      "mountPoints": [],
+      "memoryReservation": 512,
+      "memory": 3500,
+      "volumesFrom": [],
+      "image": "{{app_image_uri}}",
+      "essential": true,
+      "name": "{{app_container}}"
+    }
+  ],
+  "placementConstraints": [],
+  "family": "{{app_task}}",
+  "networkMode": "bridge",
+  "volumes": []
+}
