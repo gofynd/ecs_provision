@@ -3,7 +3,7 @@ ECS-Provision
 
 ECS-Provision is ecs service deployment utility for humans.
 
-Example
+Installation
 -------
 
 .. code:: shell
